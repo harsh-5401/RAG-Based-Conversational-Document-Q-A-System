@@ -8,6 +8,7 @@ from langchain_openai import ChatOpenAI
 from langchain_community.vectorstores import Chroma
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
+from chromadb.config import Settings
 
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
@@ -92,7 +93,16 @@ if uploaded_files:
 
     text_splitter=RecursiveCharacterTextSplitter(chunk_size=5000 , chunk_overlap=200)
     splits=text_splitter.split_documents(documents)
-    vector_store=Chroma.from_documents(documents=splits , embedding=embeddings)
+    # vector_store=Chroma.from_documents(documents=splits , embedding=embeddings)
+    vector_store = Chroma.from_documents(
+        documents=splits,
+        embedding=embeddings,
+        client_settings=Settings(
+            chroma_db_impl="duckdb+parquet",
+            persist_directory="chroma_store"  # Optional: allows persistence
+        )
+    )
+
     retriever=vector_store.as_retriever()
 
     

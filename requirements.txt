@@ -1,45 +1,44 @@
+# --- Core LangChain and Integrations ---
 langchain
-python-dotenv
-ipykernel
 langchain-community
-pypdf
-bs4
-arxiv
-pymupdf
-wikipedia
 langchain-text-splitters
 langchain-openai
-chromadb
-sentence_transformers
-langchain_huggingface
-faiss-cpu
-langchain_chroma
-duckdb
-pandas
-openai
 langchain-groq
-duckduckgo_search==5.3.1b1
+langchain-google-genai
+langchain-chroma
+
+# --- Vector DB Support ---
+chromadb==0.4.24
+duckdb                         # Avoids SQLite dependency issues
+faiss-cpu
+
+# --- Embeddings ---
+sentence_transformers
+huggingface_hub
+
+# --- PDF and Web Loaders ---
+pypdf
 pymupdf
 arxiv
 wikipedia
-mysql-connector-python
-SQLAlchemy
-validators==0.28.1
+bs4
+duckduckgo_search==5.3.1b1
 youtube_transcript_api
 unstructured
 pytube
-numexpr
-huggingface_hub
-langserve
+
+# --- Streamlit and APIs ---
+streamlit
 fastapi
 sse_starlette
-groq
-langchain_community 
+langserve
+
+# --- Util Libraries ---
+validators==0.28.1
+numexpr
+pandas
 IProgress
-streamlit
-langchain-ollama
-google-genai
-langchain-google-genai
-arxiv
-wikipedia
-duckduckgo-search
+ipykernel
+python-dotenv
+mysql-connector-python
+SQLAlchemy
